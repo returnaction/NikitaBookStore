@@ -57,5 +57,26 @@ namespace NikitaBookStore.Areas.Admin.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult Delete(int id)
+        {
+            Category? category = _unitOfWork.Category.Get(c => c.Id == id);
+            return View(category);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteAction(int id)
+        {
+            Category? category = _unitOfWork.Category.Get(c => c.Id == id);
+
+            if (category is null)
+                return NotFound();
+
+            _unitOfWork.Category.Remove(category);
+            _unitOfWork.Save();
+            TempData["success"] = $"Category {category.Title} was deleted";
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

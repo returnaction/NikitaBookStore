@@ -14,7 +14,7 @@ namespace NikitaBookStore.Repository
 
         public void Update(Category category)
         {
-            _context.Categories.Add(category);
+            _context.Categories.Update(category);
         }
     }
 }
