@@ -12,6 +12,7 @@ namespace NikitaBookStore.Data
         }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
