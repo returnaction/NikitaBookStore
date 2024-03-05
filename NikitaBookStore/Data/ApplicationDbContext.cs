@@ -9,5 +9,12 @@ namespace NikitaBookStore.Data
             : base(options)
         {
         }
+
+        public DbSet<ApplicationDbContext> ApplicationUsers { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
     }
 }
