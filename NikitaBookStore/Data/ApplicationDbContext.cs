@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using NikitaBookStore.Models;
 
 namespace NikitaBookStore.Data
 {
@@ -10,7 +11,7 @@ namespace NikitaBookStore.Data
         {
         }
 
-        public DbSet<ApplicationDbContext> ApplicationUsers { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

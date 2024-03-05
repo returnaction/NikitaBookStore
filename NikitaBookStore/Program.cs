@@ -42,9 +42,15 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.MapRazorPages();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
 
 app.Run();
+
+
+// bambo@gmail.com sldk@#SDF122
+// kastet@gmail.com sldk@#SDF122
+// admin@gmail.com sldk@#SDF122
