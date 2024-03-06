@@ -19,14 +19,14 @@ namespace NikitaBookStore.Models
         [MaxLength(25, ErrorMessage = "Max lenth of the title is 25 characters")]
         public string Author { get; set; } = null!;
 
-
+        [Range(1, double.MaxValue, ErrorMessage = "The number can't be negative")]
         public decimal Price { get; set; }
-        public DateTime DatePublished { get; set; }
+        public DateTime DatePublished { get; set; } = DateTime.Now;
 
         [ForeignKey("CategoryId")]
+        [ValidateNever]
         public Category Category { get; set; }
 
-        [ValidateNever]
         public int CategoryId { get; set; }
 
         [ValidateNever]
