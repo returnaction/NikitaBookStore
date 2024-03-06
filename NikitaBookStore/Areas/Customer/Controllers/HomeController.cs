@@ -17,7 +17,11 @@ namespace NikitaBookStore.Areas.Customer.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        
+        public IActionResult Index()
+        {
+            List<Book> books = _unitOfWork.Book.GetAll(includeProperties: "Category").ToList();
+            return View(books);
+        }
 
 
 
