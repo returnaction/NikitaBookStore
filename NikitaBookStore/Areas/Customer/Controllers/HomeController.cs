@@ -2,8 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using NikitaBookStore.Models;
 using System.Diagnostics;
 
-namespace NikitaBookStore.Controllers
+namespace NikitaBookStore.Areas.Customer.Controllers
 {
+    [Area("Customer")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

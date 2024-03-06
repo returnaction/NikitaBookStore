@@ -29,6 +29,7 @@ namespace NikitaBookStore.Models
         [ValidateNever]
         public int CategoryId { get; set; }
 
+        [ValidateNever]
         public string?  ImageURL { get; set; }
     }
 }
