@@ -102,5 +102,37 @@ namespace NikitaBookStore.Areas.Admin.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult Delete(int id)
+        {
+            Book? book = _unitOfWork.Book.Get(book => book.Id == id);
+            return View(book);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteAction(int id)
+        {
+            Book? book = _unitOfWork.Book.Get(b => b.Id == id);
+
+            _unitOfWork.Book.Remove(book);
+            _unitOfWork.Save();
+
+            string wwwRootPath = _webHostEnvironment.WebRootPath;
+
+            if (!string.IsNullOrEmpty(book.ImageURL))
+            {
+                // delete the old image
+                string oldImagePath = Path.Combine(wwwRootPath, book.ImageURL.TrimStart('\\'));
+
+                if (System.IO.File.Exists(oldImagePath))
+                {
+                    System.IO.File.Delete(oldImagePath);
+                }
+            }
+
+            TempData["success"] = $"Book {book.Title} was deleted";
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
