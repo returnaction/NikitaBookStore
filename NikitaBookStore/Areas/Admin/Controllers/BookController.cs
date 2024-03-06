@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using NikitaBookStore.Models;
 using NikitaBookStore.Repository.IRepository;
+using NikitaBookStore.Utility;
 
 namespace NikitaBookStore.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class BookController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

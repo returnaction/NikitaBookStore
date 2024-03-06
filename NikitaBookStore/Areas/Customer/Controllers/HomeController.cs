@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using NikitaBookStore.Models;
 using NikitaBookStore.Repository.IRepository;
 using System.Diagnostics;
+using System.Net.Http.Headers;
 
 namespace NikitaBookStore.Areas.Customer.Controllers
 {
@@ -23,6 +24,11 @@ namespace NikitaBookStore.Areas.Customer.Controllers
             return View(books);
         }
 
+        public IActionResult Details(int id)
+        {
+            Book? book = _unitOfWork.Book.Get(book => book.Id == id, includeProperties: "Category");
+            return View(book);
+        }
 
 
         public IActionResult Privacy()
